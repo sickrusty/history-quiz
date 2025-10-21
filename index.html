@@ -3,37 +3,33 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Western Civilization Quiz Challenge 🎯</title>
+<title>Western Civilization: Hell Mode 😈</title>
 <style>
   body {
     font-family: "Montserrat", sans-serif;
-    background: radial-gradient(circle at top, #202040, #111);
+    background: radial-gradient(circle at top, #0d0d0d, #000);
     color: #fff;
     text-align: center;
     padding: 20px;
   }
-
   h1 {
     font-family: "Michroma", sans-serif;
     color: #ffd369;
-    text-shadow: 0 0 8px #ffb703;
+    text-shadow: 0 0 12px #ffb703;
   }
-
   .quiz-container {
-    max-width: 500px;
-    margin: 20px auto;
-    background: rgba(255, 255, 255, 0.05);
+    max-width: 520px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05);
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
   }
-
   .question {
     font-weight: 600;
-    margin: 20px 0 15px;
+    margin: 20px 0;
     font-size: 18px;
   }
-
   button {
     display: block;
     width: 100%;
@@ -47,68 +43,94 @@
     cursor: pointer;
     transition: 0.2s;
   }
-
-  button:hover {
-    transform: scale(1.02);
-    background: #ffb703;
-  }
-
-  .correct {
-    background: #06d6a0 !important;
-    color: #fff !important;
-  }
-
-  .wrong {
-    background: #ef476f !important;
-    color: #fff !important;
-  }
-
+  button:hover { transform: scale(1.03); }
+  .correct { background: #06d6a0 !important; color: white !important; }
+  .wrong { background: #ef476f !important; color: white !important; }
   img {
     max-width: 100%;
     border-radius: 12px;
-    margin-top: 15px;
-  }
-
-  #result {
     margin-top: 20px;
+  }
+  #result {
+    margin-top: 25px;
     font-size: 20px;
     color: #ffd369;
-    font-weight: 600;
+    font-weight: bold;
   }
-
-  #scoreboard {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #bbb;
-  }
-
 </style>
 </head>
 <body>
-
-<h1>Western Civ Quiz 🧠</h1>
+<h1>Western Civ: Hell Mode 💀 ilysid</h1>
 <div class="quiz-container">
   <p id="question" class="question"></p>
   <div id="options"></div>
   <p id="feedback"></p>
   <p id="scoreboard"></p>
-  <img id="painting" style="display:none;" src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Louis_XIV_of_France.jpg" alt="Louis XIV portrait" />
+  <img id="painting" style="display:none;" src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Louis_XIV_of_France.jpg" alt="Louis XIV" />
   <p id="result"></p>
 </div>
 
 <script>
-const quiz = [
-  { q: "1️⃣ What did Renaissance Humanism emphasize most?", options: ["A) The divine right of kings", "B) The dignity and potential of man", "C) The corruption of the Church"], answer: 1 },
-  { q: "2️⃣ What was Martin Luther protesting in his 95 Theses?", options: ["A) The power of German princes", "B) Indulgences and Church corruption", "C) The invention of printing"], answer: 1 },
-  { q: "3️⃣ What did the Peace of Westphalia (1648) achieve?", options: ["A) Ended the Thirty Years' War and recognized state sovereignty", "B) Restored papal rule in Germany", "C) Created the British Parliament"], answer: 0 },
-  { q: "4️⃣ What does Raison d’État mean?", options: ["A) The state’s interest above all else", "B) The king’s mercy toward the people", "C) The Church’s moral authority"], answer: 0 },
-  { q: "5️⃣ Who promoted natural rights and consent of the governed?", options: ["A) Thomas Hobbes", "B) John Locke", "C) Cardinal Richelieu"], answer: 1 },
-  { q: "6️⃣ What did the Edict of Nantes (1598) do?", options: ["A) Granted religious tolerance to Huguenots", "B) Abolished feudalism", "C) Ended absolutism in France"], answer: 0 },
-  { q: "7️⃣ What phrase best summarizes Louis XIV’s rule?", options: ["A) I am the State", "B) Liberty, Equality, Fraternity", "C) Knowledge is Power"], answer: 0 },
-  { q: "8️⃣ What was Newton’s main contribution in 1687?", options: ["A) Universal laws of motion and gravity", "B) Theory of evolution", "C) Concept of divine right"], answer: 0 },
-  { q: "9️⃣ According to Rousseau, political power should come from:", options: ["A) The will of God", "B) The general will of the people", "C) The nobility"], answer: 1 },
-  { q: "🔟 What was the main goal of Diderot’s Encyclopédie?", options: ["A) Critique the Church and spread reason", "B) Praise absolutist rulers", "C) Teach military strategy"], answer: 0 }
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// --- 20 Devil-level questions ---
+const allQuestions = [
+  {q:"Which factor most directly enabled Florence’s rise as a Renaissance power?",options:["A) Its republican institutions and Medici patronage","B) Papal relocation from Rome to Florence","C) Military alliance with France","D) Protestant independence from the Vatican"],answer:0},
+  {q:"What theological principle differentiated Calvinism from Lutheranism?",options:["A) Doctrine of predestination","B) Salvation by faith alone","C) Rejection of baptism","D) Opposition to the Eucharist"],answer:0},
+  {q:"How did the Concordat of Bologna (1516) strengthen the French monarchy?",options:["A) It allowed the King to appoint bishops","B) It abolished tithes","C) It banned Jesuit schools","D) It made the Pope head of France"],answer:0},
+  {q:"Why was the Peace of Augsburg (1555) politically revolutionary?",options:["A) It legalized Lutheranism and state religious choice","B) It ended papal rule in Italy","C) It recognized Calvinism","D) It reestablished the Holy Roman Empire"],answer:0},
+  {q:"How did the Council of Trent (1545–1563) reform the Catholic Church?",options:["A) Clarified doctrine and reasserted papal authority","B) Accepted Protestant criticism","C) Abolished monasteries","D) Declared faith alone sufficient for salvation"],answer:0},
+  {q:"What strategic motive guided Richelieu’s involvement in the Thirty Years’ War?",options:["A) Undermining Habsburg dominance","B) Defending Catholicism","C) Expanding papal territory","D) Suppressing mercantilism"],answer:0},
+  {q:"The Fronde influenced Louis XIV’s monarchy by:",options:["A) Convincing him to centralize power and control nobility","B) Leading to parliamentary democracy","C) Weakening absolutism","D) Encouraging alliance with Spain"],answer:0},
+  {q:"What was the economic basis of mercantilism under Colbert?",options:["A) State-controlled exports and accumulation of bullion","B) Free trade and competition","C) Abolition of tariffs","D) Decentralized production"],answer:0},
+  {q:"How did the Revocation of the Edict of Nantes affect France?",options:["A) Caused economic decline by expelling skilled Huguenots","B) Ended religious tensions","C) Strengthened Catholic-Protestant unity","D) Brought papal approval of toleration"],answer:0},
+  {q:"Which event symbolized the birth of constitutional monarchy in England?",options:["A) The Glorious Revolution (1688) and Bill of Rights (1689)","B) Execution of Charles I","C) Magna Carta","D) Cromwell’s Commonwealth"],answer:0},
+  {q:"How did Bacon’s empiricism differ from Descartes’ rationalism?",options:["A) Bacon emphasized observation; Descartes relied on reason","B) Bacon trusted innate ideas","C) Descartes rejected logic","D) Both denied the value of experiments"],answer:0},
+  {q:"What innovation in Newton’s Principia unified terrestrial and celestial physics?",options:["A) Universal gravitation","B) Laws of optics","C) Conservation of energy","D) Differential calculus"],answer:0},
+  {q:"Why did Montesquieu’s Spirit of the Laws mark a political revolution?",options:["A) It introduced separation of powers to prevent tyranny","B) It reasserted divine right","C) It abolished monarchy","D) It glorified absolutism"],answer:0},
+  {q:"What was Rousseau’s central argument in The Social Contract (1762)?",options:["A) Legitimate authority arises from the general will of the people","B) Sovereignty belongs to monarchs","C) Inequality is natural","D) Reason is inferior to faith"],answer:0},
+  {q:"Why did Voltaire criticize the Church so fiercely?",options:["A) He opposed intolerance and clerical privilege","B) He supported feudalism","C) He believed science was immoral","D) He wanted papal rule in France"],answer:0},
+  {q:"In what way did Adam Smith challenge mercantilism?",options:["A) Advocated free trade and the invisible hand of the market","B) Supported tariffs to protect industry","C) Promoted bullionism","D) Favored monopolies"],answer:0},
+  {q:"How did the Enlightenment differ from the Renaissance intellectually?",options:["A) Enlightenment emphasized reason and reform; Renaissance emphasized art and human dignity","B) Enlightenment ignored science","C) Renaissance denied individualism","D) Both rejected classical learning"],answer:0},
+  {q:"What was the immediate political consequence of the French Revolution’s abolition of feudal privileges?",options:["A) Creation of a new merit-based civil society","B) Restoration of aristocracy","C) Return of the monarchy","D) Economic decline"],answer:0},
+  {q:"What was Napoleon’s long-term impact through the Civil Code (1804)?",options:["A) Institutionalizing equality before law and secular authority","B) Restoring feudalism","C) Granting church supremacy","D) Establishing hereditary nobility"],answer:0},
+  {q:"How did the Congress of Vienna (1815) aim to contain revolutionary ideas?",options:["A) Restoring monarchies and balancing power through the Concert of Europe","B) Expanding nationalism","C) Encouraging liberal constitutions","D) Promoting self-determination"],answer:0}
 ];
+
+// --- 20 Short Answer Prompts ---
+const allShort = [
+  "Analyze how Renaissance humanism redefined the relationship between faith and reason.",
+  "Explain how the printing press accelerated both the Reformation and scientific inquiry.",
+  "Discuss the role of Catherine de Médicis in maintaining royal authority amid religious civil wars.",
+  "Compare the aims of the Edict of Nantes and its Revocation under Louis XIV.",
+  "Explain how the Fronde shaped absolutist propaganda at Versailles.",
+  "Evaluate Colbert’s mercantilist policies and their connection to France’s military ambitions.",
+  "Compare Locke’s and Hobbes’s theories of government legitimacy.",
+  "Discuss why France supported Protestant forces during the Thirty Years’ War despite being Catholic.",
+  "Explain how the Peace of Westphalia redefined sovereignty and diplomacy.",
+  "Analyze how Richelieu balanced religion and politics under the principle of raison d’État.",
+  "Explain the ideological tension between Enlightenment rationalism and traditional Catholicism.",
+  "How did Galileo’s trial reflect the broader conflict between science and authority?",
+  "Compare Descartes’ rationalism and Bacon’s empiricism in shaping modern science.",
+  "Explain the Enlightenment’s role in inspiring the Declaration of the Rights of Man (1789).",
+  "Discuss Rousseau’s critique of civilization and inequality.",
+  "How did Montesquieu’s ideas influence later constitutional democracies?",
+  "Analyze the relationship between absolutism, architecture, and political control at Versailles.",
+  "Compare the ideological goals of the Reformation and the Enlightenment.",
+  "Explain how Humanism prepared the ground for secular political thought.",
+  "How did Napoleon’s Civil Code embody Enlightenment principles but restrict liberty?"
+];
+
+// --- Build randomized selection ---
+const quiz = shuffle(allQuestions).slice(0,7);
+quiz.forEach(q => q.options = shuffle(q.options));
+const shortSet = shuffle(allShort).slice(0,3);
 
 let current = 0;
 let score = 0;
@@ -123,48 +145,52 @@ function loadQuestion() {
   q.options.forEach((opt, i) => {
     const btn = document.createElement("button");
     btn.textContent = opt;
-    btn.onclick = () => checkAnswer(i, btn);
+    btn.onclick = () => checkAnswer(opt, btn);
     document.getElementById("options").appendChild(btn);
   });
 }
 
-function checkAnswer(selected, btn) {
+function checkAnswer(selectedText, btn) {
   const q = quiz[current];
   const buttons = document.querySelectorAll("button");
   buttons.forEach(b => b.disabled = true);
 
-  if (selected === q.answer) {
+  if (q.options.indexOf(selectedText) === q.answer) {
     btn.classList.add("correct");
     document.getElementById("feedback").innerHTML = "✅ Correct!";
     score++;
   } else {
     btn.classList.add("wrong");
     document.getElementById("feedback").innerHTML = "❌ Wrong!";
-    buttons[q.answer].classList.add("correct");
   }
 
   setTimeout(() => {
     current++;
-    if (current < quiz.length) {
-      loadQuestion();
-    } else {
-      endQuiz();
-    }
+    if (current < quiz.length) loadQuestion();
+    else endQuiz();
   }, 1200);
 }
 
 function endQuiz() {
   document.getElementById("options").innerHTML = "";
-  document.getElementById("question").textContent = "🎉 Quiz Completed!";
+  document.getElementById("question").textContent = "🔥 Quiz Complete!";
   document.getElementById("painting").style.display = "block";
   document.getElementById("feedback").textContent = "";
   document.getElementById("scoreboard").textContent = "";
+
   let comment = "";
-  if (score === quiz.length) comment = "👑 Perfect! You’re the Sun King of history!";
-  else if (score >= 7) comment = "⚔️ Great job, Enlightened Scholar!";
-  else if (score >= 4) comment = "📜 Not bad, but read those notes again!";
-  else comment = "💀 Back to the Dark Ages...";
-  document.getElementById("result").innerHTML = `Your final score: <b>${score}/${quiz.length}</b><br>${comment}`;
+  if (score === quiz.length) comment = "👑 Perfect historian! The Sorbonne would fear you.";
+  else if (score >= 5) comment = "⚔️ Brilliant! You’ve mastered the age of reason.";
+  else if (score >= 3) comment = "📜 You survive, but barely — revise your Rousseau!";
+  else comment = "💀 Sent back to the Dark Ages...";
+  
+  document.getElementById("result").innerHTML = `
+    Score: <b>${score}/${quiz.length}</b><br>${comment}<br><br>
+    🧩 Short Answer Section:<br>
+     ${shortSet[0]}<br><br>
+     ${shortSet[1]}<br><br>
+     ${shortSet[2]}
+  `;
 }
 
 loadQuestion();
