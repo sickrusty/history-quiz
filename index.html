@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Western Civilization Quiz Challenge 🎯</title>
+<style>
+  body {
+    font-family: "Montserrat", sans-serif;
+    background: radial-gradient(circle at top, #202040, #111);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-family: "Michroma", sans-serif;
+    color: #ffd369;
+    text-shadow: 0 0 8px #ffb703;
+  }
+
+  .quiz-container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+  }
+
+  .question {
+    font-weight: 600;
+    margin: 20px 0 15px;
+    font-size: 18px;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    background: #ffd369;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.02);
+    background: #ffb703;
+  }
+
+  .correct {
+    background: #06d6a0 !important;
+    color: #fff !important;
+  }
+
+  .wrong {
+    background: #ef476f !important;
+    color: #fff !important;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffd369;
+    font-weight: 600;
+  }
+
+  #scoreboard {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #bbb;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Western Civ Quiz 🧠</h1>
+<div class="quiz-container">
+  <p id="question" class="question"></p>
+  <div id="options"></div>
+  <p id="feedback"></p>
+  <p id="scoreboard"></p>
+  <img id="painting" style="display:none;" src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Louis_XIV_of_France.jpg" alt="Louis XIV portrait" />
+  <p id="result"></p>
+</div>
+
+<script>
+const quiz = [
+  { q: "1️⃣ What did Renaissance Humanism emphasize most?", options: ["A) The divine right of kings", "B) The dignity and potential of man", "C) The corruption of the Church"], answer: 1 },
+  { q: "2️⃣ What was Martin Luther protesting in his 95 Theses?", options: ["A) The power of German princes", "B) Indulgences and Church corruption", "C) The invention of printing"], answer: 1 },
+  { q: "3️⃣ What did the Peace of Westphalia (1648) achieve?", options: ["A) Ended the Thirty Years' War and recognized state sovereignty", "B) Restored papal rule in Germany", "C) Created the British Parliament"], answer: 0 },
+  { q: "4️⃣ What does Raison d’État mean?", options: ["A) The state’s interest above all else", "B) The king’s mercy toward the people", "C) The Church’s moral authority"], answer: 0 },
+  { q: "5️⃣ Who promoted natural rights and consent of the governed?", options: ["A) Thomas Hobbes", "B) John Locke", "C) Cardinal Richelieu"], answer: 1 },
+  { q: "6️⃣ What did the Edict of Nantes (1598) do?", options: ["A) Granted religious tolerance to Huguenots", "B) Abolished feudalism", "C) Ended absolutism in France"], answer: 0 },
+  { q: "7️⃣ What phrase best summarizes Louis XIV’s rule?", options: ["A) I am the State", "B) Liberty, Equality, Fraternity", "C) Knowledge is Power"], answer: 0 },
+  { q: "8️⃣ What was Newton’s main contribution in 1687?", options: ["A) Universal laws of motion and gravity", "B) Theory of evolution", "C) Concept of divine right"], answer: 0 },
+  { q: "9️⃣ According to Rousseau, political power should come from:", options: ["A) The will of God", "B) The general will of the people", "C) The nobility"], answer: 1 },
+  { q: "🔟 What was the main goal of Diderot’s Encyclopédie?", options: ["A) Critique the Church and spread reason", "B) Praise absolutist rulers", "C) Teach military strategy"], answer: 0 }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  const q = quiz[current];
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("question").textContent = q.q;
+  document.getElementById("options").innerHTML = "";
+  document.getElementById("scoreboard").textContent = `Score: ${score}/${quiz.length}`;
+  
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(i, btn);
+    document.getElementById("options").appendChild(btn);
+  });
+}
+
+function checkAnswer(selected, btn) {
+  const q = quiz[current];
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(b => b.disabled = true);
+
+  if (selected === q.answer) {
+    btn.classList.add("correct");
+    document.getElementById("feedback").innerHTML = "✅ Correct!";
+    score++;
+  } else {
+    btn.classList.add("wrong");
+    document.getElementById("feedback").innerHTML = "❌ Wrong!";
+    buttons[q.answer].classList.add("correct");
+  }
+
+  setTimeout(() => {
+    current++;
+    if (current < quiz.length) {
+      loadQuestion();
+    } else {
+      endQuiz();
+    }
+  }, 1200);
+}
+
+function endQuiz() {
+  document.getElementById("options").innerHTML = "";
+  document.getElementById("question").textContent = "🎉 Quiz Completed!";
+  document.getElementById("painting").style.display = "block";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("scoreboard").textContent = "";
+  let comment = "";
+  if (score === quiz.length) comment = "👑 Perfect! You’re the Sun King of history!";
+  else if (score >= 7) comment = "⚔️ Great job, Enlightened Scholar!";
+  else if (score >= 4) comment = "📜 Not bad, but read those notes again!";
+  else comment = "💀 Back to the Dark Ages...";
+  document.getElementById("result").innerHTML = `Your final score: <b>${score}/${quiz.length}</b><br>${comment}`;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
